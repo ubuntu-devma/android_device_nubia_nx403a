@@ -1,3 +1,7 @@
+This repo created for testing compile TWRP recovery for ZTE Nubia Z5S mini nx403a
+
+thnx to and based upon: https://github.com/MoKee/android_device_nubia_nx403a
+
 Unified Device Tree For Nubia NX403A
 ========================================
 Basic   | Spec Sheet
@@ -13,3 +17,4 @@ Display | 720 x 1080 pixels, 4.7 inches
 Camera  | 13 MP, 4128 x 3096 pixels, autofocus, LED flash
 
 Thanks lwang and others who supported me bring up this device.
+
