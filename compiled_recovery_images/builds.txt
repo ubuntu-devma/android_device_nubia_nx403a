@@ -1,0 +1,68 @@
+source ./build/envsetup.sh
+lunch omni_nx403a-eng
+RUN=`date +%m%d%H%M%S` && date && date >> make.$RUN.log && /usr/bin/time -f "Total time: %E" make -j4 recoveryimage 2>&1 | tee -a make.$RUN.log && date >> make.$RUN.log && date
+#copy compiled image && logs
+make clean
+
+with/without:
+
+=======
+prebuilded kernel (zImage) *_based
+TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/*
+
+a) Nubia_Z5Smini_TWRP2.6.30+V3And_pda.recovery.img-zImage
+b) NX403A_4.2_to_4.4_recovery_V1.img-zImage
+c) NX403A_CNCommon_V1.26_boot.img-zImage
+
+
+1. TW_TARGET_USES_QCOM_BSP := true
+
+2. #TW_TARGET_USES_QCOM_BSP := true
+
+3. ##CAF:
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+
+#mk tree (commented!)
+# Flags
+#TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
+#TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
+
+
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_BRIGHTNESS_PATH := '/sys/class/leds/lcd-backlight/brightness'
+TW_NEW_ION_HEAP := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+BOARD_HAS_JANKY_BACKBUFFER := true
+
+=======
+z5s_mini_H113_kernel
+with compiled kernel from sources
+https://github.com/ztemt/z5s_mini_H113_kernel
+
+
+#mk tree
+# Kernel inline build
+#w TARGET_KERNEL_SOURCE := kernel/nubia/nx403a
+#w TARGET_KERNEL_CONFIG := cm_nubiamini2_defconfig
+
+
+=======
+BOARD_KERNEL_CMDLINE:
+#mokee:
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=disabled androidboot.bootdevice=msm_sdcc.1
+
+#Nubia_Z5Smini_TWRP2.6.30+V3And_pda:
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=permissive
+
+#NX403A_CNCommon_V1.26_boot:
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4
+
+
+==================
+TODO: for pruduction builds!!!!: 
+TWRP_EVENT_LOGGING               := false
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true (default)
+
+
+
