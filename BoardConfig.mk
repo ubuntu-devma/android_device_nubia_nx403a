@@ -53,6 +53,8 @@ TARGET_SPECIFIC_HEADER_PATH := device/nubia/nx403a/include
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/NX403A_4.2_to_4.4_recovery_V1.img-zImage
 #TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-zImage
 TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/recovery/Nubia_Z5Smini_TWRP2.6.30+V3And_pda.recovery.img-zImage
+#TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/NX403A_4.2_to_4.4_recovery_V1.img-zImage
+#TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-zImage
 #wae
 
 #w PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl \
@@ -248,7 +250,7 @@ TARGET_RECOVERY_DEVICE_MODULES += twrp.fstab
 #
 
 #
-TW_TARGET_USES_QCOM_BSP := true
+#TW_TARGET_USES_QCOM_BSP := true
 #
 
 TW_INCLUDE_FB2PNG := true
@@ -294,9 +296,9 @@ TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 
 #####
 # Make sure this folder exists so display stuff doesn't fail
-$(shell mkdir -p $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/)
+#$(shell mkdir -p $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/)
 #####
-$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+#$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 
 HAVE_SELINUX := true
 #wae
