@@ -13,24 +13,50 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#v.20160419start:
+#comments with prefix #w  - commented by wladimit_tm
+#was - wladimir_tm add start
+#wae - wladimir_tm add end
+  
 # inherit from the proprietary version
--include vendor/nubia/nx403a/BoardConfigVendor.mk
+#w -include vendor/nubia/nx403a/BoardConfigVendor.mk
 
-MK_TOOLCHAIN_VARIANT := uber
+#w MK_TOOLCHAIN_VARIANT := uber
+
+#was
+LOCAL_PATH := device/nubia/nx403a
+USE_CAMERA_STUB := true
+#wae
 
 # Flags
 #TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 #TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 
+#was
+##CAF:
+#TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+#TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+#wae
+
 TARGET_SPECIFIC_HEADER_PATH := device/nubia/nx403a/include
 
 # Kernel inline build
-TARGET_KERNEL_SOURCE := kernel/nubia/nx403a
-TARGET_KERNEL_CONFIG := cm_nubiamini2_defconfig
+#w TARGET_KERNEL_SOURCE := kernel/nubia/nx403a
+#w TARGET_KERNEL_CONFIG := cm_nubiamini2_defconfig
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.9
 
-PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl \
-	, $(PRODUCT_COPY_FILES))
+#w # Kernel
+#w TARGET_PREBUILT_KERNEL = zImage from NX403A_4.2_to_4.4_recovery_V1 - 6.5 MB (6,468,168 bytes)
+#w TARGET_PREBUILT_RECOVERY_KERNEL = zImage from Nubia_Z5Smini_TWRP2.6.30+V3And_pda - 7.4 MB (7,368,496 bytes)
+#w TARGET_PREBUILT_KERNEL = zImage from NX403A_CNCommon_V1.26 - boot  - 6.4 MB (6,435,176 bytes)
+#was
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/NX403A_4.2_to_4.4_recovery_V1.img-zImage
+#TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-zImage
+TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/recovery/Nubia_Z5Smini_TWRP2.6.30+V3And_pda.recovery.img-zImage
+#wae
+
+#w PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl \
+#w	, $(PRODUCT_COPY_FILES))
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -73,7 +99,15 @@ BOARD_LIB_DUMPSTATE        := libdumpstate.nx403a
 BOARD_EGL_CFG              := device/nubia/nx403a/configs/egl.cfg
 
 # Kernel 
-BOARD_KERNEL_CMDLINE  := console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=disabled androidboot.bootdevice=msm_sdcc.1
+#w BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=disabled androidboot.bootdevice=msm_sdcc.1
+
+#was
+#Nubia_Z5Smini_TWRP2.6.30+V3And_pda:
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=permissive
+#NX403A_4.2_to_4.4_recovery_V1:
+#BOARD_KERNEL_CMDLINE:= console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4
+
+
 BOARD_KERNEL_BASE     := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
@@ -151,11 +185,11 @@ RECOVERY_FSTAB_VERSION          := 2
 BOARD_SUPPRESS_SECURE_ERASE     := true
 BOARD_HAS_NO_SELECT_BUTTON      := true
 BOARD_HAS_LARGE_FILESYSTEM      := true
-BORAD_REC_LANG_CHINESE          := true
+#w BORAD_REC_LANG_CHINESE          := true
 TARGET_RECOVERY_PIXEL_FORMAT    := "RGBX_8888"
 #TARGET_RECOVERY_INITRC          := device/nubia/nx403a/recovery/init.rc
 #BOARD_CUSTOM_GRAPHICS           := ../../../device/nubia/nx403a/recovery/graphics.c
-BOARD_USE_CUSTOM_RECOVERY_FONT  := \"fontcn30_18x48.h\"
+#BOARD_USE_CUSTOM_RECOVERY_FONT  := \"fontcn30_18x48.h\"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
 
 # TWRP Recovery
@@ -165,26 +199,125 @@ TW_INTERNAL_STORAGE_PATH         := "/sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT  := "sdcard"
 TW_EXTERNAL_STORAGE_PATH         := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT  := "external_sd"
-TW_NO_REBOOT_BOOTLOADER          := true
-TW_HAS_DOWNLOAD_MODE             := false
-TWRP_EVENT_LOGGING               := false
+#w TW_NO_REBOOT_BOOTLOADER          := true
+#w TW_HAS_DOWNLOAD_MODE             := false
+#w TWRP_EVENT_LOGGING               := false
+#was
+TWRP_EVENT_LOGGING               := true
+#wae
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
+#was
+BOARD_HAS_DOWNLOAD_MODE 	 := true
+##for TERP3.0*
+#This TW_THEME flag replaces the older DEVICE_RESOLUTION flag.
+#TWRP now uses scaling to stretch any theme to fit the screen resolution.
+#There are currently 5 settings which are:
+#portrait_hdpi, portrait_mdpi, landscape_hdpi, landscape_mdpi, and watch_mdpi. 
+#For portrait, you should probably select the hdpi theme 
+#for resolutions of 720x1280 and higher
+TW_THEME := portrait_hdpi
+TW_DEFAULT_EXTERNAL_STORAGE := true
+#RECOVERY_GRAPHICS_USE_LINELENGTH := true
+#TW_IGNORE_MAJOR_AXIS_0 := true
+#TW_SCREEN_BLANK_ON_BOOT := true
+#TW_NO_SCREEN_TIMEOUT := true
+#RECOVERY_SDCARD_ON_DATA := true
+#BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+BOARD_SUPPRESS_EMMC_WIPE := true
+#TARGET_RECOVERY_QCOM_RTC_FIX := true
+#BOARD_HAS_JANKY_BACKBUFFER := true
+TARGET_RECOVERY_DEVICE_MODULES += twrp.fstab
+#TWRP_EVENT_LOGGING := true
+
+
+#twrp_bootable_miniui_android.mk_file_from:
+#!!!!!!!!!!!!!!!!!!
+#TARGET_CUSTOM_KERNEL_HEADERS += $(LOCAL_PATH)/minui/include 
+# = path to files msm_ion.h and msm_mdp.h
+#
+#TW_BRIGHTNESS_PATH := '/sys/class/leds/lcd-backlight/brightness'
+# 
+#BOARD_CUSTOM_GRAPHICS
+# = path to file graphics.c 
+#TW_BOARD_CUSTOM_GRAPHICS
+# = the same - but twrp_bootable_miniuitwrp_android.mk_file_from
+
+#
+#TW_MAX_BRIGHTNESS := 150
+#
+
+#
+TW_TARGET_USES_QCOM_BSP := true
+#
+
+TW_INCLUDE_FB2PNG := true
+
+TW_NEW_ION_HEAP := true
+
+#TW_DISABLE_DOUBLE_BUFFERING := true
+
+#TW_NO_USB_STORAGE := true
+
+#BOARD_HAS_NO_REAL_SDCARD := true
+# This excludes parted from the build... parted is prebuilt and for arm CPU only
+
+#TW_USE_TOOLBOX := true
+
+#TW_EXCLUDE_MTP := true
+#MTP not woking in omni 4.4
+
+#TW_EXCLUDE_SUPERSU := true
+
+TW_HAS_DOWNLOAD_MODE := true
+# - on 44-  reboots into system
+
+#(TW_DISABLE_DOUBLE_BUFFERING), true)
+
+#TW_NEVER_UNMOUNT_SYSTEM := true
+# -- not USE - via can not format system
+ 
+
+#TW_FORCE_CPUINFO_FOR_DEVICE_ID), true
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+
+#TW_EXCLUDE_ENCRYPTED_BACKUPS := true
+# for smaller size
+
+#TW_NO_EXFAT : = true
+#for smaller size
+
+#TW_SCREEN_BLANK_ON_BOOT := true
+
+#TW_DISABLE_TTF := true
+## This excludes file 324.0KiB [######    ]  libft2.so
+
+#####
+# Make sure this folder exists so display stuff doesn't fail
+$(shell mkdir -p $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/)
+#####
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
+HAVE_SELINUX := true
+#wae
+
 # Don't build qcom camera HAL
-USE_CAMERA_STUB                      := false
-USE_DEVICE_SPECIFIC_CAMERA           := true
-USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
+#w USE_CAMERA_STUB                      := false
+#w USE_DEVICE_SPECIFIC_CAMERA           := true
+#w USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
 
 -include device/qcom/sepolicy/sepolicy.mk
 
 # Enable dex-preoptimization to speed up first boot sequence
-ifeq ($(HOST_OS),linux)
-  ifeq ($(TARGET_BUILD_VARIANT),userdebug)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-      WITH_DEXPREOPT_COMP := false
-    endif
-  endif
-endif
+#w  ifeq ($(HOST_OS),linux)
+#w  ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+#w    ifeq ($(WITH_DEXPREOPT),)
+#w      WITH_DEXPREOPT := true
+#w      WITH_DEXPREOPT_COMP := false
+#w    endif
+#w  endif
+#w endif
 #WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
+WITH_DEXPREOPT := false
+ANDROID_COMMON_BUILD_MK = true

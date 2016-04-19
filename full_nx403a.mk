@@ -21,8 +21,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/nubia/nx403a/device.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := nx403a
+#PRODUCT_DEVICE := nx403a
 PRODUCT_NAME := full_nx403a
-PRODUCT_BRAND := Nubia
-PRODUCT_MODEL := NX403A
-PRODUCT_MANUFACTURER := Nubia
+#PRODUCT_BRAND := Nubia
+#PRODUCT_MODEL := NX403A
+#PRODUCT_MANUFACTURER := Nubia

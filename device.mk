@@ -16,7 +16,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(call inherit-product, vendor/nubia/nx403a/nx403a-vendor.mk)
+#w $(call inherit-product, vendor/nubia/nx403a/nx403a-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/nubia/nx403a/overlay
 
@@ -130,8 +130,10 @@ PRODUCT_COPY_FILES += \
 
 # TWRP fstab
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab
-    
+    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab \
+    $(LOCAL_PATH)/recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+
+
 # RAMDISK
 PRODUCT_PACKAGES += fstab.qcom
 PRODUCT_PACKAGES += init.qcom.rc
