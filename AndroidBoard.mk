@@ -31,4 +31,4 @@ LOCAL_MODULE_PATH  := $(TARGET_RECOVERY_ROOT_OUT)/etc
 include $(BUILD_PREBUILT)
 
 # include the non-open-source counterpart to this file
-#-include vendor/PHICOMM/msm8610/AndroidBoardVendor.mk
+

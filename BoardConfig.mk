@@ -24,7 +24,7 @@
 #w MK_TOOLCHAIN_VARIANT := uber
 
 #was
-LOCAL_PATH := device/nubia/nx403a
+LOCAL_PATH := device/nubia/NX403A
 USE_CAMERA_STUB := true
 #wae
 
@@ -38,7 +38,7 @@ USE_CAMERA_STUB := true
 #TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 #wae
 
-TARGET_SPECIFIC_HEADER_PATH := device/nubia/nx403a/include
+TARGET_SPECIFIC_HEADER_PATH := device/nubia/NX403A/include
 
 # Kernel inline build
 #w TARGET_KERNEL_SOURCE := kernel/nubia/nx403a
@@ -50,11 +50,11 @@ TARGET_SPECIFIC_HEADER_PATH := device/nubia/nx403a/include
 #w TARGET_PREBUILT_RECOVERY_KERNEL = zImage from Nubia_Z5Smini_TWRP2.6.30+V3And_pda - 7.4 MB (7,368,496 bytes)
 #w TARGET_PREBUILT_KERNEL = zImage from NX403A_CNCommon_V1.26 - boot  - 6.4 MB (6,435,176 bytes)
 #was
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/NX403A_4.2_to_4.4_recovery_V1.img-zImage
-#TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-zImage
-TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/recovery/Nubia_Z5Smini_TWRP2.6.30+V3And_pda.recovery.img-zImage
+#TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/NX403A_4.2_to_4.4_recovery_V1.img-zImage
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-zImage
+#TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/recovery/Nubia_Z5Smini_TWRP2.6.30+V3And_pda.recovery.img-zImage
 #TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/NX403A_4.2_to_4.4_recovery_V1.img-zImage
-#TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-zImage
+TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-zImage
 #wae
 
 #w PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl \
@@ -90,15 +90,15 @@ MALLOC_IMPL := dlmalloc
 
 # Bootloader
 TARGET_NO_BOOTLOADER         := true
-TARGET_BOOTLOADER_NAME       := nx403a
+TARGET_BOOTLOADER_NAME       := NX403A
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
-TARGET_BOARD_INFO_FILE       := device/nubia/nx403a/board-info.txt
+TARGET_BOARD_INFO_FILE       := device/nubia/NX403A/board-info.txt
 
 # Others
 TARGET_NO_RADIOIMAGE       := true
 BOARD_USES_SECURE_SERVICES := true
 BOARD_LIB_DUMPSTATE        := libdumpstate.nx403a
-BOARD_EGL_CFG              := device/nubia/nx403a/configs/egl.cfg
+BOARD_EGL_CFG              := device/nubia/NX403A/configs/egl.cfg
 
 # Kernel 
 #w BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=disabled androidboot.bootdevice=msm_sdcc.1
@@ -173,23 +173,25 @@ WIFI_DRIVER_FW_PATH_AP           := "ap"
 BOARD_HAVE_BLUETOOTH                        := true
 BOARD_HAVE_BLUETOOTH_QCOM                   := true
 BLUETOOTH_HCI_USE_MCT                       := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nubia/nx403a/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nubia/NX403A/bluetooth
 
 # RIL class
-BOARD_RIL_CLASS := ../../../device/nubia/nx403a/ril/
+BOARD_RIL_CLASS := ../../../device/nubia/NX403A/ril/
 BOARD_PROVIDES_LIBRIL:=true
 
 #TARGET_NO_RECOVERY := true
 # Recovery
 BOARD_TOUCH_RECOVERY            := true
-TARGET_RECOVERY_FSTAB           := device/nubia/nx403a/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB           := device/nubia/NX403A/rootdir/fstab.qcom
 RECOVERY_FSTAB_VERSION          := 2
 BOARD_SUPPRESS_SECURE_ERASE     := true
 BOARD_HAS_NO_SELECT_BUTTON      := true
 BOARD_HAS_LARGE_FILESYSTEM      := true
 #w BORAD_REC_LANG_CHINESE          := true
 TARGET_RECOVERY_PIXEL_FORMAT    := "RGBX_8888"
-#TARGET_RECOVERY_INITRC          := device/nubia/nx403a/recovery/init.rc
+#w uncommented!
+TARGET_RECOVERY_INITRC          := device/nubia/NX403A/recovery/init.rc
+#w uncommented!
 #BOARD_CUSTOM_GRAPHICS           := ../../../device/nubia/nx403a/recovery/graphics.c
 #BOARD_USE_CUSTOM_RECOVERY_FONT  := \"fontcn30_18x48.h\"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
@@ -204,9 +206,7 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT  := "external_sd"
 #w TW_NO_REBOOT_BOOTLOADER          := true
 #w TW_HAS_DOWNLOAD_MODE             := false
 #w TWRP_EVENT_LOGGING               := false
-#was
-TWRP_EVENT_LOGGING               := true
-#wae
+
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
 #was
@@ -281,7 +281,7 @@ TW_HAS_DOWNLOAD_MODE := true
  
 
 #TW_FORCE_CPUINFO_FOR_DEVICE_ID), true
-TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+#TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 
 #TW_EXCLUDE_ENCRYPTED_BACKUPS := true
 # for smaller size

@@ -18,7 +18,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 #w $(call inherit-product, vendor/nubia/nx403a/nx403a-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/nubia/nx403a/overlay
+DEVICE_PACKAGE_OVERLAYS += device/nubia/NX403A/overlay
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -27,7 +27,7 @@ DEVICE_PACKAGE_OVERLAYS += device/nubia/nx403a/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-LOCAL_PATH := device/nubia/nx403a
+LOCAL_PATH := device/nubia/NX403A
 
 # Snd_soc_msm
 PRODUCT_COPY_FILES += \
@@ -136,16 +136,17 @@ PRODUCT_COPY_FILES += \
 
 # RAMDISK
 PRODUCT_PACKAGES += fstab.qcom
-PRODUCT_PACKAGES += init.qcom.rc
-PRODUCT_PACKAGES += init.qcom.sh
-PRODUCT_PACKAGES += init.qcom.usb.rc
-PRODUCT_PACKAGES += init.qcom.usb.sh
-PRODUCT_PACKAGES += init.target.rc
-PRODUCT_PACKAGES += ueventd.qcom.rc
-PRODUCT_PACKAGES += init.qcom.class_core.sh
-PRODUCT_PACKAGES += init.class_main.sh
-PRODUCT_PACKAGES += init.qcom.early_boot.sh
-PRODUCT_PACKAGES += init.qcom.syspart_fixup.sh
+#w PRODUCT_PACKAGES += init.qcom.rc
+#w PRODUCT_PACKAGES += init.qcom.sh
+#w PRODUCT_PACKAGES += init.qcom.usb.rc
+#w PRODUCT_PACKAGES += init.qcom.usb.sh
+#w PRODUCT_PACKAGES += init.target.rc
+#w PRODUCT_PACKAGES += ueventd.qcom.rc
+#w PRODUCT_PACKAGES += init.qcom.class_core.sh
+#w PRODUCT_PACKAGES += init.class_main.sh
+#w PRODUCT_PACKAGES += init.qcom.early_boot.sh
+#w PRODUCT_PACKAGES += init.qcom.syspart_fixup.sh
+
 
 # Poweroff charger
 PRODUCT_PACKAGES += \
@@ -266,8 +267,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0
 
 # common build.props
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp,adb
+#w PRODUCT_PROPERTY_OVERRIDES += \
+#w    persist.sys.usb.config=mtp,adb
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1 \
@@ -281,9 +282,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.locale.language=zh \
-    ro.product.locale.region=CN \
-    persist.sys.timezone=Asia/Shanghai
+    ro.product.locale.language=en \
+    ro.product.locale.region=US \
+    persist.sys.timezone=Europe/Minsk
+
+#w    ro.product.locale.language=zh \
+#w    ro.product.locale.region=CN \
+#w    persist.sys.timezone=Asia/Shanghai
+
+#w TODO:
+#w persist.sys.timezone=Europe/Moscow
+#w ro.product.locale.language=ru
+#w ro.product.locale.region=RU
 
 # Camera
     PRODUCT_PROPERTY_OVERRIDES += \

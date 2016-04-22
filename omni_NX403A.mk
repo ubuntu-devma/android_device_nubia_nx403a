@@ -9,11 +9,11 @@ PRODUCT_RELEASE_NAME := NX403A
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/nubia/nx403a/device.mk)
+$(call inherit-product, device/nubia/NX403A/device.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := nx403a
-PRODUCT_NAME := omni_nx403a
+PRODUCT_DEVICE := NX403A
+PRODUCT_NAME := omni_NX403A
 PRODUCT_BRAND := NUBIA
 PRODUCT_MODEL := z5s_mini
 PRODUCT_MANUFACTURER := ZTE
