@@ -2,6 +2,9 @@ This repo created for testing compile TWRP recovery for ZTE Nubia Z5S mini nx403
 
 thnx to and based upon: https://github.com/MoKee/android_device_nubia_nx403a
 
+succesfully compilations of TWRP3.0.2-0 on omni 5.1 base sources
+with replased /bootable/recovery sources from omni 6.0
+
 Unified Device Tree For Nubia NX403A
 ========================================
 Basic   | Spec Sheet
