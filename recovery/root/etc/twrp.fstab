@@ -19,7 +19,7 @@
 
 /persist	emmc	/dev/block/mmcblk0p22 flags=backup=1;display=Persist
 
-/m9kefs1	emmc   /block/mmcblk0p20 flags=backup=1;display=NV-EFS
+/m9kefs1	emmc   /dev/block/mmcblk0p20 flags=backup=1;display=NV-EFS
 /m9kefs2	emmc   /dev/block/mmcblk0p21 flags=backup=1;subpartitionof=/m9kefs1
 /m9kefs3	emmc   /dev/block/mmcblk0p22 flags=backup=1;subpartitionof=/m9kefs1
 /m9kefsc	emmc   /dev/block/mmcblk0p24 flags=backup=1;subpartitionof=/m9kefs1
