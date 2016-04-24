@@ -154,3 +154,6 @@ ro.gps.agps_provider=1
 
 # Maintainer
 ro.mk.maintainer=parhelia
+ro.twrp.maintainer=wladimir_tm
+
+

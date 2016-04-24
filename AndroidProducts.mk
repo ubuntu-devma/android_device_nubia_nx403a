@@ -14,6 +14,6 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_nx403a.mk \
-    $(LOCAL_DIR)/omni_nx403a.mk
+    $(LOCAL_DIR)/full_NX403A.mk \
+    $(LOCAL_DIR)/omni_NX403A.mk
 

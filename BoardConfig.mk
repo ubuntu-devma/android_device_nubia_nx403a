@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,8 +20,6 @@
   
 # inherit from the proprietary version
 #w -include vendor/nubia/nx403a/BoardConfigVendor.mk
-
-#w MK_TOOLCHAIN_VARIANT := uber
 
 #was
 LOCAL_PATH := device/nubia/NX403A
@@ -56,9 +54,6 @@ TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-zImage
 #TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/NX403A_4.2_to_4.4_recovery_V1.img-zImage
 TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-zImage
 #wae
-
-#w PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl \
-#w	, $(PRODUCT_COPY_FILES))
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -124,20 +119,10 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 2362232832 # 2.66G
 BOARD_FLASH_BLOCK_SIZE             := 131072
 
 # GPS
-#BOARD_HAVE_NEW_QC_GPS := true
-#TARGET_NO_RPC         := true
 
 #TARGET_HAVE_QC_PERF:=true
 
 # Audio
-QCOM_FM_ENABLED                    := true
-AUDIO_FEATURE_ENABLED_FM           := true
-BOARD_USES_ALSA_AUDIO              := true
-BOARD_USES_LEGACY_ALSA_AUDIO       := true
-TARGET_USES_QCOM_COMPRESSED_AUDIO  := true
-BOARD_HAVE_NEW_QCOM_CSDCLIENT      := true
-BOARD_USES_SEPERATED_VOICE_SPEAKER := true
-BOARD_HAVE_CSD_FAST_CALL_SWITCH    := true
 
 # Display
 TARGET_USES_ION                 := true
@@ -153,31 +138,6 @@ TARGET_POWERHAL_VARIANT:=qcom
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
-# Webkit
-ENABLE_WEBGL            := true
-TARGET_FORCE_CPU_UPLOAD := true
-
-# FIXME: HOSTAPD-derived wifi driver
-BOARD_HAS_QCOM_WLAN              := true
-BOARD_HAS_QCOM_WLAN_SDK          := true
-BOARD_WLAN_DEVICE                := qcwcn
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-WIFI_DRIVER_FW_PATH_STA          := "sta"
-WIFI_DRIVER_FW_PATH_AP           := "ap"
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH                        := true
-BOARD_HAVE_BLUETOOTH_QCOM                   := true
-BLUETOOTH_HCI_USE_MCT                       := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nubia/NX403A/bluetooth
-
-# RIL class
-BOARD_RIL_CLASS := ../../../device/nubia/NX403A/ril/
-BOARD_PROVIDES_LIBRIL:=true
 
 #TARGET_NO_RECOVERY := true
 # Recovery
@@ -194,10 +154,10 @@ TARGET_RECOVERY_INITRC          := device/nubia/NX403A/recovery/init.rc
 #w uncommented!
 #BOARD_CUSTOM_GRAPHICS           := ../../../device/nubia/nx403a/recovery/graphics.c
 #BOARD_USE_CUSTOM_RECOVERY_FONT  := \"fontcn30_18x48.h\"
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
+#w TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
 
 # TWRP Recovery
-DEVICE_RESOLUTION                := 720x1280
+#w DEVICE_RESOLUTION                := 720x1280
 #RECOVERY_SDCARD_ON_DATA         := true
 TW_INTERNAL_STORAGE_PATH         := "/sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT  := "sdcard"
