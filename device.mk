@@ -53,8 +53,19 @@ PRODUCT_COPY_FILES += \
 #    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab \
 
 
+
 # RAMDISK
 PRODUCT_PACKAGES += fstab.qcom
+#PRODUCT_PACKAGES += init.qcom.rc
+PRODUCT_PACKAGES += init.qcom.sh
+#PRODUCT_PACKAGES += init.qcom.usb.rc
+PRODUCT_PACKAGES += init.qcom.usb.sh
+#PRODUCT_PACKAGES += init.target.rc
+PRODUCT_PACKAGES += ueventd.qcom.rc
+PRODUCT_PACKAGES += init.qcom.class_core.sh
+PRODUCT_PACKAGES += init.class_main.sh
+PRODUCT_PACKAGES += init.qcom.early_boot.sh
+PRODUCT_PACKAGES += init.qcom.syspart_fixup.sh
 
 # Poweroff charger
 PRODUCT_PACKAGES += \
