@@ -38,8 +38,8 @@ PRODUCT_COPY_FILES += \
 # WIFI
 
 # Thermald
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/thermald/thermald.conf:system/etc/thermald-8064.conf
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/thermald/thermald.conf:system/etc/thermald-8064.conf
 
 # These are the hardware-specific features
 
@@ -49,8 +49,8 @@ PRODUCT_COPY_FILES += \
 
 # TWRP fstab
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab \
     $(LOCAL_PATH)/recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+#    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab \
 
 
 # RAMDISK
@@ -63,9 +63,9 @@ PRODUCT_PACKAGES += \
 # Audio
 
 #LIBGESTURES
-PRODUCT_PACKAGES += \
-    libgestures \
-    gestures.msm8960
+#PRODUCT_PACKAGES += \
+#    libgestures \
+#    gestures.msm8960
 
 # Bluetooth
 
@@ -97,16 +97,16 @@ PRODUCT_PACKAGES += \
 # Media
 
 # Power hal
-PRODUCT_PACKAGES += \
-    power.msm8960
+#PRODUCT_PACKAGES += \
+#    power.msm8960
 
 # USB
 
 # Filesystem management tools
-PRODUCT_PACKAGES += \
-    e2fsck      \
-    make_ext4fs \
-    setup_fs
+#PRODUCT_PACKAGES += \
+#    e2fsck      \
+#    make_ext4fs \
+#    setup_fs
 
 # Other apps
 
@@ -139,7 +139,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+# PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nx403a,NX403A,nx403,NX403

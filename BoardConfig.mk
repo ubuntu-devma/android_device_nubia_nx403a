@@ -142,16 +142,17 @@ BOARD_USES_QC_TIME_SERVICES := true
 #TARGET_NO_RECOVERY := true
 # Recovery
 BOARD_TOUCH_RECOVERY            := true
-TARGET_RECOVERY_FSTAB           := device/nubia/NX403A/rootdir/fstab.qcom
+#w TARGET_RECOVERY_FSTAB           := device/nubia/NX403A/rootdir/fstab.qcom
+#w via better use auto acceptance of "recovery.fstab" from root of device tree 
 RECOVERY_FSTAB_VERSION          := 2
 BOARD_SUPPRESS_SECURE_ERASE     := true
 BOARD_HAS_NO_SELECT_BUTTON      := true
 BOARD_HAS_LARGE_FILESYSTEM      := true
 #w BORAD_REC_LANG_CHINESE          := true
 TARGET_RECOVERY_PIXEL_FORMAT    := "RGBX_8888"
-#w uncommented!
-TARGET_RECOVERY_INITRC          := device/nubia/NX403A/recovery/init.rc
-#w uncommented!
+#w 
+#TARGET_RECOVERY_INITRC          := device/nubia/NX403A/recovery/init.rc
+#w
 #BOARD_CUSTOM_GRAPHICS           := ../../../device/nubia/nx403a/recovery/graphics.c
 #BOARD_USE_CUSTOM_RECOVERY_FONT  := \"fontcn30_18x48.h\"
 #w TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
@@ -165,7 +166,7 @@ TW_EXTERNAL_STORAGE_PATH         := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT  := "external_sd"
 #w TW_NO_REBOOT_BOOTLOADER          := true
 #w TW_HAS_DOWNLOAD_MODE             := false
-#w TWRP_EVENT_LOGGING               := false
+TWRP_EVENT_LOGGING               := false
 
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
@@ -186,7 +187,7 @@ TW_DEFAULT_EXTERNAL_STORAGE := true
 #TW_NO_SCREEN_TIMEOUT := true
 #RECOVERY_SDCARD_ON_DATA := true
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-BOARD_SUPPRESS_EMMC_WIPE := true
+#BOARD_SUPPRESS_EMMC_WIPE := true
 #TARGET_RECOVERY_QCOM_RTC_FIX := true
 #BOARD_HAS_JANKY_BACKBUFFER := true
 TARGET_RECOVERY_DEVICE_MODULES += twrp.fstab
@@ -195,8 +196,9 @@ TARGET_RECOVERY_DEVICE_MODULES += twrp.fstab
 
 #twrp_bootable_miniui_android.mk_file_from:
 #!!!!!!!!!!!!!!!!!!
-#TARGET_CUSTOM_KERNEL_HEADERS += $(LOCAL_PATH)/minui/include 
+#TARGET_CUSTOM_KERNEL_HEADERS += $(LOCAL_PATH)/include/linux
 # = path to files msm_ion.h and msm_mdp.h
+#likes TARGET_SPECIFIC_HEADER_PATH := device/nubia/NX403A/include
 #
 #TW_BRIGHTNESS_PATH := '/sys/class/leds/lcd-backlight/brightness'
 # 
