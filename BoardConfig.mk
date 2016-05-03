@@ -158,7 +158,7 @@ TARGET_RECOVERY_PIXEL_FORMAT    := "RGBX_8888"
 #w TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
 
 # TWRP Recovery
-#w DEVICE_RESOLUTION                := 720x1280
+DEVICE_RESOLUTION                := 720x1280
 #RECOVERY_SDCARD_ON_DATA         := true
 TW_INTERNAL_STORAGE_PATH         := "/sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT  := "sdcard"
