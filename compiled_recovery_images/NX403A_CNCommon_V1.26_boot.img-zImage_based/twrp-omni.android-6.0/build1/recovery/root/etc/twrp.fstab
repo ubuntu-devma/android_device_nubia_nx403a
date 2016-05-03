@@ -1,0 +1,72 @@
+###
+###
+/boot		emmc	/dev/block/platform/msm_sdcc.1/by-name/boot
+#/boot		emmc	/dev/block/mmcblk0p7
+/system		ext4	/dev/block/platform/msm_sdcc.1/by-name/system
+/data		ext4	/dev/block/platform/msm_sdcc.1/by-name/userdata 
+/cache		ext4	/dev/block/platform/msm_sdcc.1/by-name/cache
+/recovery	emmc	/dev/block/platform/msm_sdcc.1/by-name/recovery flags=backup=1;display=Recovery
+/sdcard		vfat	/dev/block/platform/msm_sdcc.1/by-name/grow flags=display="Internal_sd";storage;wipeingui
+#w/internal_sd	vfat	/dev/block/platform/msm_sdcc.1/by-name/usbmsc      flags=display="Internal_sd";storage;wipeingui;removable
+#f/external_sd	vfat	/dev/block/mmcblk1p1 /dev/block/mmcblk1 flags=display="Micro SDcard";storage;wipeingui;removable
+/external_sd	vfat	/dev/block/mmcblk1p1	/dev/block/mmcblk1      flags=display="External_sd";storage;wipeingui;removable
+/usb-otg vfat	/dev/block/sda1 /dev/block/sda flags=display="USB-OTG";storage;wipeingui;removable
+
+/efs1		emmc	/dev/block/mmcblk0p13 flags=backup=1;display=OEM
+/efs2		emmc	/dev/block/mmcblk0p14 flags=backup=1;subpartitionof=/efs1
+/efs3		emmc	/dev/block/mmcblk0p15 flags=backup=1;subpartitionof=/efs1
+/DDR		emmc	/dev/block/mmcblk0p23 flags=backup=1;subpartitionof=/efs1
+
+/persist	emmc	/dev/block/mmcblk0p22 flags=backup=1;display=Persist
+
+/m9kefs1	emmc   /dev/block/mmcblk0p20 flags=backup=1;display=NV-EFS
+/m9kefs2	emmc   /dev/block/mmcblk0p21 flags=backup=1;subpartitionof=/m9kefs1
+/m9kefs3	emmc   /dev/block/mmcblk0p22 flags=backup=1;subpartitionof=/m9kefs1
+/m9kefsc	emmc   /dev/block/mmcblk0p24 flags=backup=1;subpartitionof=/m9kefs1
+/modemst1	emmc   /dev/block/mmcblk0p10 flags=backup=1;subpartitionof=/m9kefs1
+/modemst2	emmc   /dev/block/mmcblk0p11 flags=backup=1;subpartitionof=/m9kefs1
+/customfs	emmc   /dev/block/mmcblk0p19 flags=backup=1;subpartitionof=/m9kefs1
+
+/persist	emmc   /dev/block/mmcblk0p17 flags=backup=1;display=Persist
+
+/modem		emmc   /dev/block/mmcblk0p1  flags=backup=1;display=Modem
+
+/sbl1		emmc   /dev/block/mmcblk0p2  flags=backup=1;display=Firmware
+/sbl2		emmc   /dev/block/mmcblk0p3  flags=backup=1;subpartitionof=/sbl1
+/sbl3		emmc   /dev/block/mmcblk0p4  flags=backup=1;subpartitionof=/sbl1
+/rpm		emmc   /dev/block/mmcblk0p6  flags=backup=1;subpartitionof=/sbl1
+/aboot		emmc   /dev/block/mmcblk0p5  flags=backup=1;subpartitionof=/sbl1
+/tz		emmc   /dev/block/mmcblk0p8  flags=backup=1;subpartitionof=/sbl1
+/pad		emmc   /dev/block/mmcblk0p9  flags=backup=1;subpartitionof=/sbl1
+/misc		emmc   /dev/block/mmcblk0p12 flags=backup=1;subpartitionof=/sbl1
+
+/splash		emmc   /dev/block/mmcblk0p13  flags=backup=1;display=Splash
+
+#
+###
+#msm_sdcc.1	name  			#blocks		name		# dd  backup_result:	# df Filesystem	Size	Used	Free	#Blksize
+#DDR	->	/dev/block/mmcblk0p23	8		mmcblk0p23	8 192		bytes	-				
+#aboot	->	/dev/block/mmcblk0p5	2 048		mmcblk0p5	2 097 152	bytes	-				
+#boot	->	/dev/block/mmcblk0p7	15 360		mmcblk0p7	15 728 640	bytes	-				
+#cache	->	/dev/block/mmcblk0p18	512 000		mmcblk0p18	no_need		-	/cache			492M	8M 483M	4096
+#customfs->	/dev/block/mmcblk0p19	153 600		mmcblk0p19	157 286 400	bytes	/custom			147M	4M 143M	4096
+#grow	->	/dev/block/mmcblk0p25	10 604 526	mmcblk0p25	no_need		-	/storage/sdcard0	10G	7G 2G	4096
+#m9kefs1	->	/dev/block/mmcblk0p20	780		mmcblk0p20	798 720		bytes	-				
+#m9kefs2	->	/dev/block/mmcblk0p21	780		mmcblk0p21	798 720		bytes	-				
+#m9kefs3	->	/dev/block/mmcblk0p22	780		mmcblk0p22	798 720		bytes	-				
+#m9kefsc	->	/dev/block/mmcblk0p24	1		mmcblk0p24	1 024		bytes					
+#misc	->	/dev/block/mmcblk0p12	1 024		mmcblk0p12	1 048 576	bytes	-				
+#modem	->	/dev/block/mmcblk0p1	87 536		mmcblk0p1	89 636 864	bytes	/firmware		85M	61M 24M	16384
+#modemst1->	/dev/block/mmcblk0p10	3 072		mmcblk0p10	3 145 728	bytes	-				
+#modemst2->	/dev/block/mmcblk0p11	3 072		mmcblk0p11	3 145 728	bytes	-				
+#pad	->	/dev/block/mmcblk0p9	1		mmcblk0p9	1 024		bytes	-				
+#persist	->	/dev/block/mmcblk0p17	8 192		mmcblk0p17	8 388 608	bytes	-				
+#recovery->	/dev/block/mmcblk0p14	15 360		mmcblk0p14	15 728 640	bytes	-				
+#rpm	->	/dev/block/mmcblk0p6	512		mmcblk0p6	524 288		bytes	-				
+#sbl1	->	/dev/block/mmcblk0p2	128		mmcblk0p2	131 072		bytes	-				
+#sbl2	->	/dev/block/mmcblk0p3	256		mmcblk0p3	262 144		bytes	-				
+#sbl3	->	/dev/block/mmcblk0p4	512		mmcblk0p4	524 288		bytes	-				
+#splash	->	/dev/block/mmcblk0p13	10 240		mmcblk0p13	10 485 760	bytes	-				
+#system	->	/dev/block/mmcblk0p15	1 258 292	mmcblk0p15	no_need		-	/system			1G 872M 339M	4096
+#tz	->	/dev/block/mmcblk0p8	512		mmcblk0p8	524 288	bytes	-	-			
+#userdata->	/dev/block/mmcblk0p16	2 306 868	mmcblk0p16	no_need		-	/data			2G	203M 1G	4096
