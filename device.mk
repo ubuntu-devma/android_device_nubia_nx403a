@@ -139,6 +139,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #    persist.sys.usb.config=mass_storage,adb
 
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.service.adb.enable=1
+
+
 #PRODUCT_PROPERTY_OVERRIDES += \
 #    ro.sf.lcd_density=320
 
