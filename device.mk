@@ -32,8 +32,8 @@ LOCAL_PATH := device/nubia/NX403A
 # Snd_soc_msm
 
 # Configurations
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/egl.cfg:system/etc/egl.cfg
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/egl.cfg:system/etc/egl.cfg
 
 # WIFI
 
@@ -57,19 +57,20 @@ PRODUCT_COPY_FILES += \
 # RAMDISK
 PRODUCT_PACKAGES += fstab.qcom
 #PRODUCT_PACKAGES += init.qcom.rc
-PRODUCT_PACKAGES += init.qcom.sh
+#PRODUCT_PACKAGES += init.qcom.sh
 #PRODUCT_PACKAGES += init.qcom.usb.rc
-PRODUCT_PACKAGES += init.qcom.usb.sh
+#PRODUCT_PACKAGES += init.qcom.usb.sh
 #PRODUCT_PACKAGES += init.target.rc
-PRODUCT_PACKAGES += ueventd.qcom.rc
-PRODUCT_PACKAGES += init.qcom.class_core.sh
-PRODUCT_PACKAGES += init.class_main.sh
-PRODUCT_PACKAGES += init.qcom.early_boot.sh
-PRODUCT_PACKAGES += init.qcom.syspart_fixup.sh
+#PRODUCT_PACKAGES += ueventd.qcom.rc
+#PRODUCT_PACKAGES += init.qcom.class_core.sh
+#PRODUCT_PACKAGES += init.class_main.sh
+#PRODUCT_PACKAGES += init.qcom.early_boot.sh
+#PRODUCT_PACKAGES += init.qcom.syspart_fixup.sh
 
-# Poweroff charger
-PRODUCT_PACKAGES += \
-    charger_res_images
+# Boot charger
+#PRODUCT_PACKAGES += \
+#    charger_res_images \
+#    charger
 
 # Audio
 
@@ -81,8 +82,8 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 
 # QRNG
-PRODUCT_PACKAGES += \
-    qrngp
+#PRODUCT_PACKAGES += \
+#    qrngp
 
 # Display
 PRODUCT_PACKAGES += \
@@ -102,8 +103,8 @@ PRODUCT_PACKAGES += \
 # HDMI
 
 # QCOM rngd
-PRODUCT_PACKAGES += \
-    qrngd
+#PRODUCT_PACKAGES += \
+#    qrngd
 
 # Media
 
@@ -112,6 +113,8 @@ PRODUCT_PACKAGES += \
 #    power.msm8960
 
 # USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
 
 # Filesystem management tools
 #PRODUCT_PACKAGES += \
@@ -128,16 +131,21 @@ PRODUCT_PACKAGES += \
 # telephony configuration
 
 # common build.props
-#w PRODUCT_PROPERTY_OVERRIDES += \
-#w    persist.sys.usb.config=mtp,adb
-
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=320
+    persist.sys.usb.config=mtp,adb
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.locale.language=en \
-    ro.product.locale.region=US \
-    persist.sys.timezone=Europe/Minsk
+# common build.props
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    persist.sys.usb.config=mass_storage,adb
+
+
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.sf.lcd_density=320
+
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.product.locale.language=en \
+#    ro.product.locale.region=US \
+#    persist.sys.timezone=Europe/Minsk
 
 #w    ro.product.locale.language=zh \
 #w    ro.product.locale.region=CN \
@@ -156,6 +164,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 TARGET_OTA_ASSERT_DEVICE := nx403a,NX403A,nx403,NX403
 
 # call dalvik heap config
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+#$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 # call hwui memory config
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+#$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)

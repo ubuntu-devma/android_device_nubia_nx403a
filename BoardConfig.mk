@@ -57,7 +57,7 @@ TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/NX403A_CNCommon_V1.26_boot.img-
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
-COMMON_GLOBAL_CFLAGS     += -DNO_SECURE_DISCARD
+#w2 COMMON_GLOBAL_CFLAGS     += -DNO_SECURE_DISCARD
 
 # Architecture
 TARGET_ARCH := arm
@@ -76,23 +76,47 @@ TARGET_KRAIT_BIONIC_PLDTHRESH        := 10
 TARGET_KRAIT_BIONIC_BBTHRESH         := 64
 TARGET_KRAIT_BIONIC_PLDSIZE          := 64
 
+#find . -type f | xargs grep TARGET_KRAIT_BIONIC_PLDOFFS
+#./bionic/libc/arch-arm/krait/bionic/memcpy_base.S: *   TARGET_KRAIT_BIONIC_PLDOFFS := <pldoffset>
+#./bionic/libc/arch-arm/krait/bionic/memcpy_base.S: *   TARGET_KRAIT_BIONIC_PLDSIZE := <pldsize>
+#./bionic/libc/arch-arm/krait/bionic/memcpy_base.S: *   TARGET_KRAIT_BIONIC_PLDTHRESH := <pldthreshold>
+#./bionic/libc/arch-arm/krait/bionic/memcpy_base.S: *   TARGET_KRAIT_BIONIC_BBTHRESH := <bbthreshold>
+#./bionic/libc/arch-arm/krait/bionic/memmove.S: *   TARGET_KRAIT_BIONIC_PLDOFFS := <pldoffset>
+#./bionic/libc/arch-arm/krait/bionic/memmove.S: *   TARGET_KRAIT_BIONIC_PLDSIZE := <pldsize>
+#./bionic/libc/arch-arm/krait/bionic/memmove.S: *   TARGET_KRAIT_BIONIC_PLDTHRESH := <pldthreshold>
+
 TARGET_USES_LOGD:=false
+#./system/core/liblog/
+#./system/core/logd
+#./bionic/libc/Android.mk:ifneq ($(TARGET_USES_LOGD),false)
+#./bionic/libc/Android.mk:libc_common_cflags += -DTARGET_USES_LOGD
+#./bootable/recovery/Android.mk:    ifeq ($(TARGET_USES_LOGD), true)
+#./bootable/recovery/prebuilt/Android.mk:    ifeq ($(TARGET_USES_LOGD), true)
+#./bootable/recovery/etc/Android.mk:    ifeq ($(TARGET_USES_LOGD), true)
+
+
 BOARD_USES_LEGACY_MMAP := true
-EXTENDED_FONT_FOOTPRINT := true
+#./bionic/libc/Android.mk:ifeq ($(BOARD_USES_LEGACY_MMAP),true)
+
+#w2 EXTENDED_FONT_FOOTPRINT := true
+#./build/target/board/generic/BoardConfig.mk:  EXTENDED_FONT_FOOTPRINT := true
+#./external/naver-fonts/Android.mk:ifneq ($(EXTENDED_FONT_FOOTPRINT),true)
+#./external/naver-fonts/Android.mk:endif  # !EXTENDED_FONT_FOOTPRINT
+
 
 # Bionic
-MALLOC_IMPL := dlmalloc
+#w2 MALLOC_IMPL := dlmalloc
 
 # Bootloader
 TARGET_NO_BOOTLOADER         := true
 TARGET_BOOTLOADER_NAME       := NX403A
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
-TARGET_BOARD_INFO_FILE       := device/nubia/NX403A/board-info.txt
+#w2 TARGET_BOARD_INFO_FILE       := device/nubia/NX403A/board-info.txt
 
 # Others
 TARGET_NO_RADIOIMAGE       := true
-BOARD_USES_SECURE_SERVICES := true
-BOARD_LIB_DUMPSTATE        := libdumpstate.nx403a
+#w2 BOARD_USES_SECURE_SERVICES := true
+#w2 BOARD_LIB_DUMPSTATE        := libdumpstate.nx403a
 BOARD_EGL_CFG              := device/nubia/NX403A/configs/egl.cfg
 
 # Kernel 
@@ -133,7 +157,7 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 #OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 #Power HAL
-TARGET_POWERHAL_VARIANT:=qcom
+TARGET_POWERHAL_VARIANT := qcom
 
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
@@ -233,7 +257,7 @@ TW_NEW_ION_HEAP := true
 
 #TW_EXCLUDE_SUPERSU := true
 
-TW_HAS_DOWNLOAD_MODE := true
+#TW_HAS_DOWNLOAD_MODE := true
 # - on 44-  reboots into system
 
 #(TW_DISABLE_DOUBLE_BUFFERING), true)
@@ -270,7 +294,7 @@ HAVE_SELINUX := true
 #w USE_DEVICE_SPECIFIC_CAMERA           := true
 #w USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
 
--include device/qcom/sepolicy/sepolicy.mk
+#w2 include device/qcom/sepolicy/sepolicy.mk
 
 # Enable dex-preoptimization to speed up first boot sequence
 #w  ifeq ($(HOST_OS),linux)
@@ -283,5 +307,5 @@ HAVE_SELINUX := true
 #w endif
 #WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
-WITH_DEXPREOPT := false
-ANDROID_COMMON_BUILD_MK = true
+#WITH_DEXPREOPT := false
+#ANDROID_COMMON_BUILD_MK = true
