@@ -58,7 +58,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += fstab.qcom
 PRODUCT_PACKAGES += init.qcom.rc
 PRODUCT_PACKAGES += init.qcom.sh
-#PRODUCT_PACKAGES += init.qcom.usb.rc
+PRODUCT_PACKAGES += init.qcom.usb.rc
 PRODUCT_PACKAGES += init.qcom.usb.sh
 #PRODUCT_PACKAGES += init.target.rc
 #PRODUCT_PACKAGES += ueventd.qcom.rc
@@ -66,6 +66,21 @@ PRODUCT_PACKAGES += init.qcom.class_core.sh
 PRODUCT_PACKAGES += init.class_main.sh
 PRODUCT_PACKAGES += init.qcom.early_boot.sh
 PRODUCT_PACKAGES += init.qcom.syspart_fixup.sh
+PRODUCT_PACKAGES += init.nubia.ums_adb.sh
+PRODUCT_PACKAGES += init.nubia.ums.sh
+PRODUCT_PACKAGES += init.nubia.usb.rc
+PRODUCT_PACKAGES += init.usb.rc
+
+##from boot
+#+ init.nubia.ums_adb.sh
+#+ init.nubia.ums.sh
+#+ init.nubia.usb.rc
+#-is init.qcom.rc
+#-is init.qcom.usb.rc
+#+ init.usb.rc
+#ueventd.rc
+#init.target.rc
+
 
 # Boot charger
 #PRODUCT_PACKAGES += \
